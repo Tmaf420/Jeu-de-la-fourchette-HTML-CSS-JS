@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+    
+    *{
+        font-family: Nerko One;
+        margin: 0;
+        outline: none;
+    }
+    
+    body{
+        background-color: grey;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media screen and (max-width: 1200px){
+        .container{
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .gauche{
+            margin: 50px;
+        }
+    }
+    @media screen and (max-width: 1200px){
+        .container{
+            margin-bottom: 50px;
+        }
+    }
+    
+    .titre{
+        margin: 30px;
+        text-align: center;
+    }
+
+    .titre h1{
+        position: relative;
+        font-size: 5em;
+    }
+
+    .titre p{
+        font-size: 2em;
+        margin-top: 20px;
+    }
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 100px;
+        width: 100%;
+    }
+
+    .gg{
+        position: absolute;
+        top: 350px;
+        font-size: 5em;
+        animation: numeroGagnant 2s infinite;
+        z-index: 10;
+        display: none;
+    }
+
+    .gauche{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: max-content;
+        position: relative;
+    }
+
+    .gauche input{
+        font-size: 4.5em;
+        width: 200px;
+        background: transparent;
+        border: 5px rgb(200, 200, 200) solid;
+        text-align: center;
+        border-radius: 20px;
+        margin-bottom: 50px;
+        outline: none;
+        color: white;
+    }
+
+    .gauche button{
+        width: 100%;
+    }
+
+    button{
+        position: relative;
+        font-size: 1.3em;
+        height: 50px;
+        width: 150px;
+        background-color: transparent;
+        border: 3px solid rgb(9, 85, 9);
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    button::before{
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0px;
+        width: 100%;
+        height: 50%;
+        background-color: rgb(9, 85, 9);
+        transition: all .2s ease-out;
+    }
+
+    button::after{
+        content: '';
+        z-index: -1;
+        position: absolute;
+        bottom: 0;
+        left: 0px;
+        width: 100%;
+        height: 50%;
+        background-color: rgb(9, 85, 9);
+        transition: all .2s ease-out;
+    }
+
+    button:hover::before,
+    button:hover::after{
+        height: 0%;
+    }
+
+    button span{
+        z-index: 10;
+        color: white;
+    }
+    
+    input[type=number] {
+        appearance: textfield;
+    }
+    
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+        margin:0;
+    }
+    
+    input::-o-inner-spin-button,
+    input::-o-outer-spin-button { 
+        -o-appearance: none;
+        margin:0
+    }
+
+    .droite{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        color: white;
+        position: relative;
+        height: 200px;
+    }
+
+    .droite .message{
+        font-size: 1.6em;
+        margin-bottom: 7px;
+    }
+
+    .droite .nombre-score, .droite .label-record{
+        font-size: 1.3em;
+        margin-bottom: 7px;
+    }
+
+    .droite button{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    @keyframes numeroGagnant{
+        0% {
+            color: #e81416;
+        }
+        10% {
+            color: #ffa500;
+        }
+        20% {
+            color: #faeb36;
+        }
+        30% {
+            color: #79c314;
+        }
+        40% {
+            color: #487de7;
+        }
+        50% {
+            color: #4b369d;
+        }
+        60% {
+            color: #70369d;
+        }
+        70% {
+            color: #4b369d;
+        }
+        80% {
+            color: #487de7;
+        }
+        90% {
+            color: #79c314;
+        }
+        100% {
+            color: #ffa500;
+        }
+        
+    }

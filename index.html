@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu De La Fourchette</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="fourchette">
+        <div class="titre">
+            <h1>LE JEU DE LA FOURCHETTE</h1>
+            <p class="max-min">Entre 1 et 100</p>
+            <p>Le numero gagnant est le : <span class="nombre">?</span></p>
+        </div>
+        <div class="container">
+            <h1 class="gg">BRAVO, VOUS AVEZ GAGNÉ!</h1>
+            <section class="gauche">
+                <input type="number" class="soumettre" max="100"/>
+                <button class="check" onclick="check()"><span>Check!</span></button>
+            </section>
+            <section class="droite">
+                <p class="message">Veuillez choisir un nombre...<p>
+                <p class="nombre-score">💯 Score: <span class="score">10</span></p>
+                <p class="label-record">
+                    🥇 Record: <span class="record">0</span>
+                </p>
+                <button class="reesayer" onclick="reesayer()"><span>🔁 Réesayer!</span></button>
+            </section>
+        </div>
+    </div>
+    <div class="memori">
+        
+    </div>
+</body>
+</html>
+<script>
+
+let bodyElem = document.querySelector('body');
+let soumettreElem = document.querySelector('.soumettre');
+let messageElem = document.querySelector('.message');
+let nombreElem = document.querySelector('.nombre');
+let scoreElem = document.querySelector('.score');
+let recordElem = document.querySelector('.record');
+let titreElem = document.querySelector('.titre');
+let droiteElem = document.querySelector('.droite');
+let gaucheElem = document.querySelector('.gauche');
+let checkElem = document.querySelector('.check');
+let ggElem = document.querySelector('.gg')
+
+let nombre = Math.trunc(Math.random() * 100) + 1;
+    let record = 0;
+    let score = 10;
+    
+    function check(){
+        
+        const soumettre = Number(soumettreElem.value);
+        
+    if (!soumettre) {
+        messageElem.textContent = '❌ Veuiller choisir un nombre';
+    } 
+    else if (soumettre === nombre) {
+        gagne()
+        nombreElem.textContent = nombre;
+    if (score > record) {
+        record = score;
+        recordElem.textContent = record;
+    }} 
+    else if (soumettre !== nombre) {
+    if (score > 1) {
+    messageElem.textContent = soumettre > nombre ? '⬆️ Trop grand!' : '⬇️ Trop petit!';
+    score--;
+    scoreElem.textContent = score;
+    } else {
+    messageElem.textContent = '❌ Perdu, dommage!';
+    scoreElem.textContent = 0;
+    nombreElem.textContent = nombre;
+    bodyElem.style.backgroundColor = 'red';
+    }
+}}
+
+function gagne(){
+  messageElem.textContent = 'BRAVO!';
+  ggElem.style.display = 'block';
+  bodyElem.style.backgroundColor = '#50cd2a';
+  soumettreElem.style.animation = 'numeroGagnant 2s infinite'
+  nombreElem.style.animation = 'numeroGagnant 2s infinite'
+  titreElem.style.animation = 'numeroGagnant 2s infinite'
+  droiteElem.style.animation = 'numeroGagnant 2s infinite'
+  gaucheElem.style.animation = 'numeroGagnant 2s infinite'
+  checkElem.style.animation = 'numeroGagnant 2s infinite'
+}
+
+function reesayer(){
+  messageElem.textContent = 'Veuillez choisir un nombre...';
+  nombreElem.textContent = '?';
+  soumettreElem.value = '';
+  nombre = Math.trunc(Math.random() * 100) + 1;
+  score = 10;
+  scoreElem.textContent = score;
+  ggElem.style.display = 'none';
+  soumettreElem.style.animation = 'none';
+  nombreElem.style.animation = 'none';
+  titreElem.style.animation = 'none';
+  droiteElem.style.animation = 'none';
+  gaucheElem.style.animation = 'none';
+  checkElem.style.animation = 'none';
+  bodyElem.style.backgroundColor = 'grey'
+}
+  </script>
